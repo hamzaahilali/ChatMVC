@@ -127,7 +127,13 @@ class DefaultController extends Controller
      * logout Action
      */
     public function logout(){
+
+        $app = App::getInstance();
+        $userManager = new UserManager($app->getDb());
+        $user = $userManager->find($_SESSION['auth']);
+        $userManager->userOffline($user);
         unset($_SESSION['auth']);
+
         $this->render('home');
     }
 

@@ -94,10 +94,7 @@
                         userReceiverId: userReceiverId
                     },
                     success: function (data) {
-                        console.log(data);
-                    },
-                    error: function (data) {
-
+                        addOutgoing_NewMsg(data.content,data.dateSend)
                     }
 
                 });
@@ -139,9 +136,9 @@
             $.each(JSONArray, function(i, item) {
 
                 if(JSONArray[i].userSenderId == currentUserId)
-                    addIncoming_msg(JSONArray[i].content,JSONArray[i].dateSend)
+                    addOutgoing_msg(JSONArray[i].content,JSONArray[i].dateSend)
                 else
-                    outgoing_msg(JSONArray[i].content,JSONArray[i].dateSend)
+                    addIncoming_msg(JSONArray[i].content,JSONArray[i].dateSend)
             });
         });
     }
@@ -160,9 +157,18 @@
         "</div>");
     }
 
-    function outgoing_msg(msg,date) {
+    function addOutgoing_msg(msg,date) {
 
         $("#msg_history").prepend(
+        "<div class='outgoing_msg'>"+
+        "<div class='sent_msg'>"+
+        "<p>"+msg+"</p>"+
+        "<span class='time_date'>"+ date +"</span></div>"+
+        "</div>");
+    }
+    function addOutgoing_NewMsg(msg,date) {
+
+        $("#msg_history").append(
         "<div class='outgoing_msg'>"+
         "<div class='sent_msg'>"+
         "<p>"+msg+"</p>"+

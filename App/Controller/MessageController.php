@@ -44,11 +44,7 @@ class MessageController extends Controller
             $messageManager = new MessageManager($app->getDb());
             $messages = $messageManager->loadDiscussion($user1, $user2,0);
 
-            $result[] = array(
-                "code" => 200,
-                "data" => $messages);
-
-            echo json_encode($result);
+            echo json_encode($messages);
         }
         else{
             $this->render('error.erreur404');
@@ -65,21 +61,28 @@ class MessageController extends Controller
         if (!empty($_POST)) {
 
             $app = App::getInstance();
-            $messageManager = new MessageManager($app->getDb());
+            $userManager = new UserManager($app->getDb());
 
-            $message = new Message([
-                "content" => $_POST['content'],
-                "userSenderId" => $_SESSION['auth'],
-                "userReceiverId" => $_POST['userReceiverId'],
-                "dateSend" => date("Y-m-d H:i:s"),
-                "read" => 0
-            ]);
-            $messageManager->add($message);
+            $userReceiver = $userManager->find($_POST['userReceiverId']);
+            if ($userReceiver) {
 
-            $result[] = array(
-                "code" => 200,
-                "data" => true);
-            echo json_encode($result);
+                $app = App::getInstance();
+                $messageManager = new MessageManager($app->getDb());
+
+                $message = new Message([
+                    "content" => $_POST['content'],
+                    "userSenderId" => $_SESSION['auth'],
+                    "userReceiverId" => $userReceiver->getId(),
+                    "dateSend" => date("Y-m-d H:i:s"),
+                    "read" => 0
+                ]);
+                $messageManager->add($message);
+
+                $id = $app->getDb()->lastInsertId();
+                $message->setId($id);
+
+                echo json_encode($message);
+            }
         }
 
     }
@@ -98,17 +101,8 @@ class MessageController extends Controller
         if ($user1 && $user2) {
             $messageManager = new MessageManager($app->getDb());
             $messages = $messageManager->loadDiscussion($user1, $user2,$page);
-
-
             echo json_encode($messages);
         }
-
-        /*$result[] = array(
-            "code" => 500,
-            "data" => "Error");
-
-        echo json_encode($result);*/
-
     }
 }
 
