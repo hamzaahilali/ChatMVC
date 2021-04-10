@@ -11,4 +11,4 @@
 
 * Then run the db script `chat.sql`
 
-* App URL : localhost/webroot/
+* App URL : `http://localhost/chatmvc/webroot/`
