@@ -2,8 +2,6 @@
 /**
  * Created by PhpStorm.
  * Message: HZM
- * Date: 14/09/2019
- * Time: 16:12
  */
 
 namespace App\Model\EntityManager;

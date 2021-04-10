@@ -1,2 +1,12 @@
-déployer le projet sous appache (wamp ou Xamp)
-créer la base de données (chat.sql) + (fichier de base de données config: Config / Config.php)
+## Installation
+
+
+* Import the project from git using commande line
+   `git clone git@xxxxxxx`
+
+* Navigate to the project folder
+      `cd ChatMVC`
+
+* Change mysql connection information (file Config/Config.php) :
+
+* Then run the db script `chat.sql`

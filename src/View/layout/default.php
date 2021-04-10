@@ -54,7 +54,7 @@
     <footer id="footer">
         <div class="row">
             <div class="col-lg-12">
-                Copyright © 2019 HZM
+                Copyright © 2021 HZM
             </div>
         </div>
 

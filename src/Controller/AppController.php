@@ -2,8 +2,6 @@
 /**
  * Created by PhpStorm.
  * User: HZM
- * Date: 14/09/2019
- * Time: 16:09
  */
 
 namespace App\Controller;

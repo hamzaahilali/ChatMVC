@@ -1,6 +1,6 @@
 <?php
 define('ROOT', dirname(__DIR__));
-define("APPPATH", ROOT . '/App');
+define("APPPATH", ROOT . '/src');
 
 require APPPATH . '/App.php';
 

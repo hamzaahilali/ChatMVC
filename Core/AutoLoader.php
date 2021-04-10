@@ -2,8 +2,6 @@
 /**
  * Created by PhpStorm.
  * User: HZM
- * Date: 14/09/2019
- * Time: 15:49
  */
 
 namespace Core;

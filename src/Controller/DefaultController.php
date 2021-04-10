@@ -2,8 +2,6 @@
 /**
  * Created by PhpStorm.
  * User: HZM
- * Date: 14/09/2019
- * Time: 16:10
  */
 
 namespace App\Controller;
@@ -20,6 +18,8 @@ class DefaultController extends Controller
      * default route
      */
     public function home(){
+
+        $currentPage = 'default.home';
         $this->render('home',compact('currentPage'));
     }
 
