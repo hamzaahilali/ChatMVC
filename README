@@ -10,3 +10,5 @@
 * Change mysql connection information (file Config/Config.php) :
 
 * Then run the db script `chat.sql`
+
+* App URL : localhost/webroot/
