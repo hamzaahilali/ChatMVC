@@ -13,7 +13,7 @@ class Controller {
 
     public function __construct()
     {
-        $this->viewPath = ROOT . '/App/View/';
+        $this->viewPath = ROOT . '/src/View/';
         $this->template = 'default';
     }
 
